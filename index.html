@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 1</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        #formData {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="myForm">
+        <input id="name" type="text" placeholder="Name" value=""><br><br>
+        <input id="email" type="email" placeholder="Email" value=""><br><br>
+        <input type="radio" id="male" name="gender" value="Male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="Female">
+        <label for="female">Female</label><br><br>
+        <input type="button" value="Submit" onclick="displayFormData()">
+    </form>
+
+    <div id="formData"></div>
+
+    <script>
+        function displayFormData() {
+            var name = $('#name').val();
+            var email = $('#email').val();
+            var gender = $('input[name="gender"]:checked').val();
+
+            var formDataContainer = $('#formData');
+            formDataContainer.html('<p><strong>Name:</strong> ' + name + '</p>' +
+                '<p><strong>Email:</strong> ' + email + '</p>' +
+                '<p><strong>Gender:</strong> ' + (gender ? gender : 'Not specified') + '</p>');
+
+            formDataContainer.fadeIn();
+
+            formDataContainer.css({
+                'font-family': 'Arial',
+                'border': '2px solid #333',
+                'background-color': '#eee'
+            });
+        }
+
+        $('#formData').mouseover(function () {
+            $(this).slideUp();
+        });
+    </script>
+</body>
+
+</html>
